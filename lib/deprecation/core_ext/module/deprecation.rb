@@ -18,6 +18,9 @@ class Module
   #     end
   #   end
   def deprecate(*method_names)
-    ActiveSupport::Deprecation.deprecate_methods(self, *method_names)
+    #ActiveSupport::Deprecation.deprecate_methods(self, *method_names)
+    #ZomgDeprecation::MethodWrapper.deprecate_methods(self, *method_names)
+    # TODO: probably affected by the instance_delegator change
+    ZomgDeprecation.deprecate_methods(self, *method_names)
   end
 end
